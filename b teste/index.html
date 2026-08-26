@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VitalSecure Hospital</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+    <div class="login-box">
+
+        <i class="fa-solid fa-shield-halved login-icon"></i>
+
+        <h2>VitalSecure Hospital</h2>
+        <h3>Acesso ao Sistema</h3>
+
+        <form id="loginForm">
+
+            <label for="loginUser">Usuário:</label>
+
+            <input
+                type="text"
+                id="loginUser"
+                placeholder="Usuário"
+                required
+            >
+
+            <label for="loginPass">Senha:</label>
+
+            <input
+                type="password"
+                id="loginPass"
+                placeholder="Senha"
+                required
+            >
+
+            <button type="submit">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Entrar
+            </button>
+
+            <div class="mensagem" id="mensagem"></div>
+
+        </form>
+
+        <div id="codigoArea">
+
+            <h3>Verificação MFA</h3>
+
+            <p>
+                Seu código rotativo muda a cada 30 segundos.
+            </p>
+
+            <div id="codigoAtual" class="mensagem"></div>
+
+            <form id="codigoForm">
+
+                <label for="codigo">
+                    Digite o código:
+                </label>
+
+                <input
+                    type="text"
+                    id="codigo"
+                    maxlength="6"
+                    placeholder="000000"
+                    inputmode="numeric"
+                    required
+                >
+
+                <button type="submit">
+                    <i class="fa-solid fa-shield-check"></i>
+                    Verificar Código
+                </button>
+
+                <div
+                    class="mensagem"
+                    id="mensagemCodigo">
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            <i class="fa-solid fa-hospital"></i>
+        </div>
+
+        <div class="logo-text">
+            <strong>Hospital Pro</strong>
+            <small>Sistema Hospitalar</small>
+        </div>
+
+    </div>
+
+    <!-- PERFIL -->
+    <div class="sidebar-profile">
+
+        <button
+            type="button"
+            id="perfilButton"
+            class="perfil-button"
+        >
+
+            <span class="perfil-avatar">
+                <i class="fa-solid fa-user"></i>
+            </span>
+
+            <span class="perfil-info">
+                <strong id="sidebarUsuarioNome">
+                    Administrador
+                </strong>
+
+                <small>
+                    Administrador
+                </small>
+            </span>
+
+            <span
+                id="notificationBadge"
+                class="notification-badge"
+            >
+                0
+            </span>
+
+        </button>
+
+        <div
+            id="profileMenu"
+            class="profile-menu"
+        >
+
+            <div class="profile-menu-header">
+                <i class="fa-solid fa-user-circle"></i>
+
+                <div>
+                    <strong id="profileMenuNome">
+                        Administrador
+                    </strong>
+
+                    <small>
+                        Administrador
+                    </small>
+                </div>
+            </div>
+
+            <button
+                type="button"
+                id="abrirNotificacoes"
+            >
+                <i class="fa-solid fa-bell"></i>
+                Notificações
+
+                <span id="profileNotificationCount">
+                    0
+                </span>
+            </button>
+
+            <button
+                type="button"
+                onclick="logout()"
+            >
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Sair da conta
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- MENU -->
+    <nav class="sidebar-nav">
+
+        <ul>
+
+            <li
+                class="menu active"
+                data-page="dashboard"
+            >
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Dashboard</span>
+            </li>
+
+            <li
+                class="menu"
+                data-page="pacientes"
+            >
+                <i class="fa-solid fa-user"></i>
+                <span>Pacientes</span>
+            </li>
+
+            <li
+                class="menu"
+                data-page="medicos"
+            >
+                <i class="fa-solid fa-user-doctor"></i>
+                <span>Médicos</span>
+            </li>
+
+            <li
+                class="menu"
+                data-page="consultas"
+            >
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Consultas</span>
+            </li>
+
+            <li
+                class="menu"
+                data-page="prontuarios"
+            >
+                <i class="fa-solid fa-file-medical"></i>
+                <span>Prontuários</span>
+            </li>
+
+            <li
+                class="menu"
+                data-page="internacao"
+            >
+                <i class="fa-solid fa-bed"></i>
+                <span>Internação</span>
+            </li>
+
+            <li
+                class="menu"
+                data-page="farmacia"
+            >
+                <i class="fa-solid fa-pills"></i>
+                <span>Farmácia</span>
+            </li>
+
+            <li
+                class="menu"
+                data-page="exames"
+            >
+                <i class="fa-solid fa-vial"></i>
+                <span>Exames</span>
+            </li>
+
+            <li
+                class="menu"
+                data-page="relatorios"
+            >
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Relatórios</span>
+            </li>
+
+            <li
+                class="menu"
+                data-page="config"
+            >
+                <i class="fa-solid fa-gear"></i>
+                <span>Configurações</span>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</aside>
+
+
+<!-- ÁREA PRINCIPAL -->
+<main class="main">
+
+    <!-- HEADER -->
+    <header>
+
+        <div class="header-title">
+            <h1>Sistema Hospitalar Pro</h1>
+
+            <span id="paginaAtual">
+                Dashboard
+            </span>
+        </div>
+
+        <div class="top-right">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="pesquisa"
+                    placeholder="Pesquisar..."
+                >
+
+            </div>
+
+
+            <!-- NOTIFICAÇÕES -->
+            <button
+                type="button"
+                id="notificationButton"
+                class="header-icon-button notification-button"
+            >
+
+                <i class="fa-solid fa-bell"></i>
+
+                <span
+                    id="headerNotificationBadge"
+                    class="header-notification-badge"
+                >
+                    0
+                </span>
+
+            </button>
+
+
+            <!-- USUÁRIO -->
+            <div class="user-profile">
+
+                <span class="header-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </span>
+
+                <div class="header-user-info">
+
+                    <strong id="usuarioNome">
+                        Administrador
+                    </strong>
+
+                    <small>
+                        Administrador
+                    </small>
+
+                </div>
+
+                <button
+                    type="button"
+                    onclick="logout()"
+                    title="Sair"
+                >
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+
+            </div>
+
+
+            <!-- TEMA -->
+            <button
+                type="button"
+                id="darkMode"
+                title="Alternar tema"
+            >
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- PAINEL DE NOTIFICAÇÕES -->
+    <div
+        id="notificationsPanel"
+        class="notifications-panel"
+    >
+
+        <div class="notifications-header">
+
+            <div>
+                <strong>Notificações</strong>
+                <small id="notificationsSubtitle">
+                    Nenhuma notificação nova
+                </small>
+            </div>
+
+            <button
+                type="button"
+                id="marcarNotificacoesLidas"
+            >
+                Marcar como lidas
+            </button>
+
+        </div>
+
+        <div
+            id="notificationsList"
+            class="notifications-list"
+        >
+        </div>
+
+    </div>
+
+
+    <!-- DASHBOARD -->
+    <section
+        id="dashboard"
+        class="page active"
+    >
+
+        <div class="page-heading">
+
+            <div>
+                <h2>Dashboard</h2>
+
+                <p>
+                    Visão geral da operação hospitalar
+                </p>
+            </div>
+
+            <span class="dashboard-status">
+                <i class="fa-solid fa-circle"></i>
+                Sistema online
+            </span>
+
+        </div>
+
+
+        <div class="cards">
+
+            <div class="card azul">
+
+                <div class="card-icon">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div>
+                    <h3>Pacientes</h3>
+                    <span id="totalPacientes">0</span>
+                </div>
+
+            </div>
+
+
+            <div class="card verde">
+
+                <div class="card-icon">
+                    <i class="fa-solid fa-user-doctor"></i>
+                </div>
+
+                <div>
+                    <h3>Médicos</h3>
+                    <span id="totalMedicos">0</span>
+                </div>
+
+            </div>
+
+
+            <div class="card laranja">
+
+                <div class="card-icon">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </div>
+
+                <div>
+                    <h3>Consultas</h3>
+                    <span id="totalConsultas">0</span>
+                </div>
+
+            </div>
+
+
+            <div class="card vermelho">
+
+                <div class="card-icon">
+                    <i class="fa-solid fa-file-medical"></i>
+                </div>
+
+                <div>
+                    <h3>Prontuários</h3>
+                    <span id="totalProntuarios">0</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="cards cards-secondary">
+
+            <div class="card">
+
+                <div class="card-icon neutral">
+                    <i class="fa-solid fa-bed"></i>
+                </div>
+
+                <div>
+                    <h3>Internados</h3>
+                    <span id="totalInternados">0</span>
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon warning">
+                    <i class="fa-solid fa-vial"></i>
+                </div>
+
+                <div>
+                    <h3>Exames Pendentes</h3>
+                    <span id="totalExames">0</span>
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon medicine">
+                    <i class="fa-solid fa-pills"></i>
+                </div>
+
+                <div>
+                    <h3>Medicamentos</h3>
+                    <span id="totalMedicamentos">0</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="dashboard-grid">
+
+            <div class="chart-card">
+
+                <div class="section-title">
+
+                    <div>
+                        <h3>Visão geral</h3>
+
+                        <span>
+                            Dados registrados no sistema
+                        </span>
+                    </div>
+
+                </div>
+
+                <canvas id="graficoHospital"></canvas>
+
+            </div>
+
+
+            <div class="quick-card">
+
+                <div class="section-title">
+
+                    <div>
+                        <h3>Status operacional</h3>
+
+                        <span>
+                            Informações atuais
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="quick-status">
+
+                    <div>
+                        <span>Médicos livres</span>
+                        <strong id="medicosLivres">0</strong>
+                    </div>
+
+                    <div>
+                        <span>Em atendimento</span>
+                        <strong id="medicosAtendimento">0</strong>
+                    </div>
+
+                    <div>
+                        <span>Novas notificações</span>
+                        <strong id="statusNotificacoes">0</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PACIENTES -->
+    <section
+        id="pacientes"
+        class="page"
+    >
+
+        <div class="page-heading">
+            <div>
+                <h2>Pacientes</h2>
+                <p>Cadastro e gerenciamento de pacientes</p>
+            </div>
+        </div>
+
+        <form id="formPaciente">
+
+            <input
+                type="hidden"
+                id="idPaciente"
+            >
+
+            <div class="form-title">
+                <i class="fa-solid fa-user-plus"></i>
+                Dados do paciente
+            </div>
+
+            <div class="form-grid">
+
+                <input
+                    type="text"
+                    id="nomePaciente"
+                    placeholder="Nome completo"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="cpfPaciente"
+                    placeholder="CPF"
+                    required
+                >
+
+                <input
+                    type="date"
+                    id="dataNascimento"
+                >
+
+                <select id="sexo">
+                    <option value="">Sexo</option>
+                    <option>Masculino</option>
+                    <option>Feminino</option>
+                    <option>Outro</option>
+                </select>
+
+                <input
+                    type="number"
+                    id="idadePaciente"
+                    placeholder="Idade"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="telefonePaciente"
+                    placeholder="Telefone"
+                >
+
+                <input
+                    type="text"
+                    id="tipoSanguineo"
+                    placeholder="Tipo sanguíneo"
+                >
+
+                <input
+                    type="text"
+                    id="convenio"
+                    placeholder="Convênio"
+                >
+
+                <textarea
+                    id="alergias"
+                    placeholder="Alergias"
+                    class="full-field"
+                ></textarea>
+
+            </div>
+
+            <button type="submit">
+                <i class="fa-solid fa-floppy-disk"></i>
+                Salvar Paciente
+            </button>
+
+        </form>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Telefone</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody id="listaPacientes"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- MÉDICOS -->
+    <section
+        id="medicos"
+        class="page"
+    >
+
+        <div class="page-heading">
+            <div>
+                <h2>Médicos</h2>
+                <p>Cadastro e disponibilidade da equipe médica</p>
+            </div>
+        </div>
+
+        <form id="formMedico">
+
+            <div class="form-title">
+                <i class="fa-solid fa-user-doctor"></i>
+                Dados do médico
+            </div>
+
+            <div class="form-grid">
+
+                <input
+                    id="nomeMedico"
+                    placeholder="Nome do médico"
+                    required
+                >
+
+                <input
+                    id="crm"
+                    placeholder="CRM"
+                >
+
+                <input
+                    id="especialidade"
+                    placeholder="Especialidade"
+                    required
+                >
+
+                <input
+                    id="telefoneMedico"
+                    placeholder="Telefone"
+                >
+
+            </div>
+
+            <button type="submit">
+                <i class="fa-solid fa-floppy-disk"></i>
+                Salvar Médico
+            </button>
+
+        </form>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>CRM</th>
+                        <th>Especialidade</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody id="listaMedicos"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONSULTAS -->
+    <section
+        id="consultas"
+        class="page"
+    >
+
+        <div class="page-heading">
+            <div>
+                <h2>Consultas</h2>
+                <p>Agenda e acompanhamento de consultas</p>
+            </div>
+        </div>
+
+        <form id="formConsulta">
+
+            <div class="form-title">
+                <i class="fa-solid fa-calendar-plus"></i>
+                Agendar consulta
+            </div>
+
+            <div class="form-grid">
+
+                <input
+                    id="pacienteConsulta"
+                    placeholder="Paciente"
+                    required
+                >
+
+                <input
+                    id="medicoConsulta"
+                    placeholder="Médico"
+                    required
+                >
+
+                <input
+                    type="date"
+                    id="dataConsulta"
+                    required
+                >
+
+                <input
+                    type="time"
+                    id="horaConsulta"
+                >
+
+                <select id="statusConsulta">
+
+                    <option>Agendada</option>
+                    <option>Confirmada</option>
+                    <option>Em atendimento</option>
+                    <option>Realizada</option>
+                    <option>Cancelada</option>
+
+                </select>
+
+            </div>
+
+            <button type="submit">
+                <i class="fa-solid fa-calendar-check"></i>
+                Agendar Consulta
+            </button>
+
+        </form>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Paciente</th>
+                        <th>Médico</th>
+                        <th>Data</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody id="listaConsultas"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRONTUÁRIOS -->
+    <section
+        id="prontuarios"
+        class="page"
+    >
+
+        <div class="page-heading">
+            <div>
+                <h2>Prontuários</h2>
+                <p>Prontuário eletrônico do paciente</p>
+            </div>
+        </div>
+
+        <form id="formProntuario">
+
+            <div class="form-title">
+                <i class="fa-solid fa-file-medical"></i>
+                Prontuário Eletrônico
+            </div>
+
+            <div class="prontuario-grid">
+
+                <input
+                    id="nomeProntuario"
+                    placeholder="Paciente"
+                    required
+                >
+
+                <input
+                    id="medicoProntuario"
+                    placeholder="Médico responsável"
+                >
+
+                <textarea
+                    id="diagnostico"
+                    placeholder="Diagnóstico"
+                    required
+                ></textarea>
+
+                <textarea
+                    id="historico"
+                    placeholder="Histórico médico"
+                ></textarea>
+
+                <textarea
+                    id="medicamentos"
+                    placeholder="Medicamentos"
+                ></textarea>
+
+                <textarea
+                    id="observacoes"
+                    placeholder="Observações"
+                ></textarea>
+
+            </div>
+
+            <button type="submit">
+                <i class="fa-solid fa-floppy-disk"></i>
+                Salvar Prontuário
+            </button>
+
+        </form>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Paciente</th>
+                        <th>Diagnóstico</th>
+                        <th>Data</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody id="listaProntuarios"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- INTERNAÇÃO -->
+    <section
+        id="internacao"
+        class="page"
+    >
+
+        <div class="page-heading">
+            <div>
+                <h2>Internação</h2>
+                <p>Controle de internações e leitos</p>
+            </div>
+        </div>
+
+        <form id="formInternacao">
+
+            <div class="form-title">
+                <i class="fa-solid fa-bed"></i>
+                Nova internação
+            </div>
+
+            <div class="form-grid">
+
+                <input
+                    id="pacienteInternacao"
+                    placeholder="Paciente"
+                    required
+                >
+
+                <input
+                    id="numeroLeito"
+                    placeholder="Número do leito"
+                    required
+                >
+
+                <select id="setorInternacao">
+
+                    <option>UTI</option>
+                    <option>Enfermaria</option>
+                    <option>Apartamento</option>
+
+                </select>
+
+                <input
+                    type="date"
+                    id="dataInternacao"
+                >
+
+            </div>
+
+            <button type="submit">
+                <i class="fa-solid fa-bed"></i>
+                Internar Paciente
+            </button>
+
+        </form>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Paciente</th>
+                        <th>Leito</th>
+                        <th>Setor</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody id="listaInternacao"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- FARMÁCIA -->
+    <section
+        id="farmacia"
+        class="page"
+    >
+
+        <div class="page-heading">
+            <div>
+                <h2>Farmácia</h2>
+                <p>Controle de medicamentos</p>
+            </div>
+        </div>
+
+        <form id="formMedicamento">
+
+            <div class="form-title">
+                <i class="fa-solid fa-pills"></i>
+                Cadastro de medicamento
+            </div>
+
+            <div class="form-grid">
+
+                <input
+                    id="nomeMedicamento"
+                    placeholder="Nome do medicamento"
+                    required
+                >
+
+                <input
+                    type="number"
+                    id="quantidadeMedicamento"
+                    placeholder="Quantidade"
+                    required
+                >
+
+                <input
+                    id="laboratorio"
+                    placeholder="Laboratório"
+                >
+
+                <input
+                    id="validadeMedicamento"
+                    type="date"
+                >
+
+            </div>
+
+            <button type="submit">
+                <i class="fa-solid fa-pills"></i>
+                Cadastrar Medicamento
+            </button>
+
+        </form>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Medicamento</th>
+                        <th>Quantidade</th>
+                        <th>Validade</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody id="listaMedicamentos"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- EXAMES -->
+    <section
+        id="exames"
+        class="page"
+    >
+
+        <div class="page-heading">
+            <div>
+                <h2>Exames</h2>
+                <p>Exames laboratoriais e resultados</p>
+            </div>
+        </div>
+
+        <form id="formExame">
+
+            <div class="form-title">
+                <i class="fa-solid fa-vial"></i>
+                Novo exame
+            </div>
+
+            <div class="form-grid">
+
+                <input
+                    id="pacienteExame"
+                    placeholder="Paciente"
+                    required
+                >
+
+                <input
+                    id="tipoExame"
+                    placeholder="Tipo de exame"
+                    required
+                >
+
+                <input
+                    type="date"
+                    id="dataExame"
+                >
+
+                <select id="statusExame">
+
+                    <option>Pendente</option>
+                    <option>Em análise</option>
+                    <option>Concluído</option>
+
+                </select>
+
+            </div>
+
+            <button type="submit">
+                <i class="fa-solid fa-vial"></i>
+                Cadastrar Exame
+            </button>
+
+        </form>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Paciente</th>
+                        <th>Exame</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody id="listaExames"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- RELATÓRIOS -->
+    <section
+        id="relatorios"
+        class="page"
+    >
+
+        <div class="page-heading">
+            <div>
+                <h2>Relatórios</h2>
+                <p>Indicadores hospitalares</p>
+            </div>
+        </div>
+
+        <div class="cards">
+
+            <div class="card azul">
+
+                <div>
+                    <h3>Total de Atendimentos</h3>
+                    <span id="relAtendimentos">0</span>
+                </div>
+
+            </div>
+
+            <div class="card verde">
+
+                <div>
+                    <h3>Altas Médicas</h3>
+                    <span id="relAltas">0</span>
+                </div>
+
+            </div>
+
+            <div class="card laranja">
+
+                <div>
+                    <h3>Ocupação</h3>
+                    <span id="relOcupacao">0%</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <button
+            type="button"
+            id="gerarRelatorio"
+        >
+            <i class="fa-solid fa-file-pdf"></i>
+            Gerar Relatório
+        </button>
+
+    </section>
+
+
+    <!-- CONFIGURAÇÕES -->
+    <section
+        id="config"
+        class="page"
+    >
+
+        <div class="page-heading">
+            <div>
+                <h2>Configurações</h2>
+                <p>Preferências do sistema</p>
+            </div>
+        </div>
+
+        <form>
+
+            <div class="form-title">
+                <i class="fa-solid fa-gear"></i>
+                Preferências
+            </div>
+
+            <button
+                type="button"
+                id="trocarTema"
+            >
+                <i class="fa-solid fa-moon"></i>
+                Alternar Tema
+            </button>
+
+            <button
+                type="button"
+                id="exportar"
+            >
+                <i class="fa-solid fa-download"></i>
+                Exportar Dados
+            </button>
+
+            <button
+                type="button"
+                id="limpar"
+                class="danger-button"
+            >
+                <i class="fa-solid fa-trash"></i>
+                Limpar Banco Local
+            </button>
+
+        </form>
+
+    </section>
+
+</main>
+
+
+<!-- MODAL -->
+<div
+    id="modal"
+    class="modal"
+>
+
+    <div class="modal-content">
+
+        <button
+            type="button"
+            class="modal-close"
+            onclick="fecharModal()"
+        >
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <h2 id="modalTitulo">
+            Título
+        </h2>
+
+        <div id="modalBody"></div>
+
+        <button
+            type="button"
+            onclick="fecharModal()"
+            class="modal-footer-button"
+        >
+            Fechar
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
