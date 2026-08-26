@@ -1,0 +1,1571 @@
+/* =========================================================
+   RESET E CONFIGURAÇÕES
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+
+    /* CORES PRINCIPAIS */
+
+    --primary: #0B1F3A;
+    --primary-hover: #07162A;
+
+    /* FUNDOS */
+
+    --background: #EEF1F4;
+    --sidebar: #0B1F3A;
+    --card: #FFFFFF;
+
+    /* TEXTOS */
+
+    --text: #172033;
+    --muted: #6B7280;
+
+    /* PRATA / CINZA */
+
+    --silver: #AEB7C2;
+    --silver-light: #E3E7EB;
+    --border: #C9D0D8;
+
+    /* STATUS */
+
+    --success: #198754;
+    --success-bg: #E4F3EB;
+
+    --warning: #A66A00;
+    --warning-bg: #F5ECD7;
+
+    --danger: #B42318;
+    --danger-bg: #FDE8E7;
+
+    /* TAMANHOS */
+
+    --sidebar-width: 235px;
+    --header-height: 76px;
+
+    /* SOMBRA */
+
+    --shadow:
+        0 4px 18px rgba(11, 31, 58, 0.08);
+
+}
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: var(--background);
+
+    color: var(--text);
+
+}
+
+
+/* =========================================================
+   APP
+========================================================= */
+
+.app {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    background: var(--background);
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    width: var(--sidebar-width);
+
+    background: var(--sidebar);
+
+    border-right: 1px solid #07162A;
+
+    z-index: 100;
+
+}
+
+
+/* =========================================================
+   PERFIL
+========================================================= */
+
+.profile-button {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 92px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: none;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+    background: var(--primary);
+
+    cursor: pointer;
+
+}
+
+.profile-circle {
+
+    width: 52px;
+
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #FFFFFF;
+
+    color: var(--primary);
+
+    border: 2px solid var(--silver);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    transition: 0.2s;
+
+}
+
+.profile-button:hover .profile-circle {
+
+    transform: scale(1.05);
+
+    background: var(--silver-light);
+
+}
+
+.notification-dot {
+
+    position: absolute;
+
+    width: 11px;
+
+    height: 11px;
+
+    top: 20px;
+
+    right: 76px;
+
+    border-radius: 50%;
+
+    background: var(--danger);
+
+    border: 2px solid #FFFFFF;
+
+    display: none;
+
+}
+
+.notification-dot.show {
+
+    display: block;
+
+}
+
+
+/* =========================================================
+   MENU DO PERFIL
+========================================================= */
+
+.profile-menu {
+
+    position: absolute;
+
+    top: 75px;
+
+    left: 15px;
+
+    width: 210px;
+
+    display: none;
+
+    padding: 8px;
+
+    background: #FFFFFF;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 15px 40px rgba(11, 31, 58, 0.20);
+
+    z-index: 500;
+
+}
+
+.profile-menu.show {
+
+    display: block;
+
+}
+
+.profile-menu button {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 12px 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: var(--text);
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    transition: 0.2s;
+
+}
+
+.profile-menu button:hover {
+
+    background: var(--silver-light);
+
+}
+
+.logout-button {
+
+    color: var(--danger) !important;
+
+}
+
+.notification-count {
+
+    min-width: 22px;
+
+    height: 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0 6px;
+
+    border-radius: 20px;
+
+    background: var(--danger);
+
+    color: #FFFFFF;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   MENU LATERAL
+========================================================= */
+
+.sidebar-menu {
+
+    padding: 22px 12px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+}
+
+.nav-button {
+
+    width: 100%;
+
+    height: 46px;
+
+    padding: 0 18px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: #B8C2CE;
+
+    text-align: left;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        color 0.2s,
+        transform 0.2s;
+
+}
+
+.nav-button:hover {
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: #FFFFFF;
+
+}
+
+.nav-button.active {
+
+    background: #FFFFFF;
+
+    color: var(--primary);
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   ÁREA PRINCIPAL
+========================================================= */
+
+.main-area {
+
+    width: calc(100% - var(--sidebar-width));
+
+    min-height: 100vh;
+
+    margin-left: var(--sidebar-width);
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.topbar {
+
+    height: var(--header-height);
+
+    display: flex;
+
+    align-items: center;
+
+    position: sticky;
+
+    top: 0;
+
+    padding: 0 34px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border-bottom: 1px solid var(--border);
+
+    z-index: 50;
+
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.site-brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 240px;
+
+}
+
+.logo-box {
+
+    width: 48px;
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background: #FFFFFF;
+
+    border: 1px solid var(--silver);
+
+    box-shadow:
+        0 4px 12px rgba(11, 31, 58, 0.10);
+
+}
+
+.logo-box img,
+.site-logo {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    padding: 0;
+
+}
+
+#logoFallback {
+
+    display: none;
+
+}
+
+.site-name {
+
+    color: var(--primary);
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================================================
+   PESQUISA
+========================================================= */
+
+.search-area {
+
+    position: absolute;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 320px;
+
+}
+
+.search-area::before {
+
+    content: "⌕";
+
+    position: absolute;
+
+    left: 14px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: var(--muted);
+
+    font-size: 20px;
+
+    pointer-events: none;
+
+}
+
+.search-area input {
+
+    width: 100%;
+
+    height: 42px;
+
+    padding: 0 16px 0 42px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    background: #F7F8FA;
+
+    color: var(--text);
+
+    outline: none;
+
+    font-size: 13px;
+
+    transition: 0.2s;
+
+}
+
+.search-area input:focus {
+
+    background: #FFFFFF;
+
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(11, 31, 58, 0.10);
+
+}
+
+
+/* =========================================================
+   CONTEÚDO
+========================================================= */
+
+.content {
+
+    padding: 28px 34px;
+
+}
+
+.page {
+
+    display: none;
+
+}
+
+.page.active {
+
+    display: block;
+
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+.dashboard-columns {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(220px, 1fr));
+
+    gap: 22px;
+
+    align-items: start;
+
+}
+
+
+/* =========================================================
+   CARDS DO DASHBOARD
+========================================================= */
+
+.dashboard-column {
+
+    min-width: 0;
+
+    min-height: 380px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+
+}
+
+.dashboard-column:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 28px rgba(11, 31, 58, 0.12);
+
+}
+
+.dashboard-column h2 {
+
+    padding: 20px 20px 16px;
+
+    border-bottom: 2px solid var(--primary);
+
+    color: var(--primary);
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    text-align: left;
+
+}
+
+.dashboard-list {
+
+    padding: 8px 20px 20px;
+
+}
+
+
+/* =========================================================
+   PACIENTES
+========================================================= */
+
+.dashboard-paciente {
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #E7EAEE;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+}
+
+.dashboard-paciente:last-child {
+
+    border-bottom: none;
+
+}
+
+
+/* =========================================================
+   MÉDICOS
+========================================================= */
+
+.dashboard-medico {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #E7EAEE;
+
+    font-size: 13px;
+
+}
+
+.dashboard-medico:last-child {
+
+    border-bottom: none;
+
+}
+
+.dashboard-medico-nome {
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+    font-weight: 500;
+
+}
+
+.dashboard-medico-status {
+
+    flex-shrink: 0;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+}
+
+.dashboard-medico-status.atendimento {
+
+    color: var(--warning);
+
+    background: var(--warning-bg);
+
+}
+
+.dashboard-medico-status.livre {
+
+    color: var(--success);
+
+    background: var(--success-bg);
+
+}
+
+
+/* =========================================================
+   CONSULTAS
+========================================================= */
+
+.dashboard-consulta {
+
+    display: grid;
+
+    grid-template-columns:
+        52px
+        90px
+        minmax(0, 1fr);
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #E7EAEE;
+
+    font-size: 11px;
+
+}
+
+.dashboard-consulta:last-child {
+
+    border-bottom: none;
+
+}
+
+.dashboard-consulta span {
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+}
+
+.dashboard-consulta span:first-child {
+
+    color: var(--primary);
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   PRONTUÁRIOS
+========================================================= */
+
+.dashboard-prontuario {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #E7EAEE;
+
+    font-size: 13px;
+
+}
+
+.dashboard-prontuario:last-child {
+
+    border-bottom: none;
+
+}
+
+.dashboard-prontuario span {
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+    font-weight: 500;
+
+}
+
+.dashboard-ver {
+
+    flex-shrink: 0;
+
+    padding: 7px 12px;
+
+    border: 1px solid var(--silver);
+
+    border-radius: 7px;
+
+    background: var(--silver-light);
+
+    color: var(--primary);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+.dashboard-ver:hover {
+
+    background: var(--primary);
+
+    border-color: var(--primary);
+
+    color: #FFFFFF;
+
+}
+
+
+/* =========================================================
+   MENSAGEM VAZIA
+========================================================= */
+
+.dashboard-empty {
+
+    padding: 22px 0;
+
+    color: #94A3B8;
+
+    font-size: 12px;
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   PÁGINAS INTERNAS
+========================================================= */
+
+.page-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 28px;
+
+}
+
+.page-header h1 {
+
+    color: var(--primary);
+
+    font-size: 26px;
+
+    font-weight: 750;
+
+}
+
+.page-header p {
+
+    margin-top: 6px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   TABELAS
+========================================================= */
+
+.table-card {
+
+    width: 100%;
+
+    background: #FFFFFF;
+
+    border: 1px solid var(--border);
+
+    border-radius: 16px;
+
+    box-shadow: var(--shadow);
+
+    overflow-x: auto;
+
+}
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+}
+
+th {
+
+    padding: 16px 18px;
+
+    background: var(--silver-light);
+
+    color: var(--primary);
+
+    border-bottom: 1px solid var(--border);
+
+    text-align: left;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.4px;
+
+}
+
+td {
+
+    padding: 16px 18px;
+
+    border-bottom: 1px solid #E7EAEE;
+
+    color: var(--text);
+
+    font-size: 13px;
+
+}
+
+tr:last-child td {
+
+    border-bottom: none;
+
+}
+
+tbody tr:hover {
+
+    background: #F7F8FA;
+
+}
+
+.empty-row {
+
+    padding: 35px !important;
+
+    color: var(--muted);
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   BOTÕES
+========================================================= */
+
+.primary-button {
+
+    height: 42px;
+
+    padding: 0 18px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: var(--primary);
+
+    color: #FFFFFF;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 10px rgba(11, 31, 58, 0.20);
+
+    transition: 0.2s;
+
+}
+
+.primary-button:hover {
+
+    background: var(--primary-hover);
+
+    transform: translateY(-1px);
+
+}
+
+.table-button {
+
+    padding: 7px 10px;
+
+    margin-right: 4px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 7px;
+
+    background: #FFFFFF;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+.table-button:hover {
+
+    border-color: var(--primary);
+
+    color: var(--primary);
+
+    background: var(--silver-light);
+
+}
+
+.table-button.delete {
+
+    color: var(--danger);
+
+    border-color: #E9B8B5;
+
+}
+
+.table-button.delete:hover {
+
+    background: var(--danger-bg);
+
+    border-color: var(--danger);
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(11, 31, 58, 0.55);
+
+    backdrop-filter: blur(3px);
+
+    z-index: 1000;
+
+}
+
+.modal.show {
+
+    display: flex;
+
+}
+
+.modal-box {
+
+    position: relative;
+
+    width: 520px;
+
+    max-width: 100%;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 30px;
+
+    background: #FFFFFF;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 25px 70px rgba(11, 31, 58, 0.30);
+
+}
+
+.modal-close {
+
+    position: absolute;
+
+    top: 14px;
+
+    right: 16px;
+
+    width: 34px;
+
+    height: 34px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: var(--silver-light);
+
+    color: var(--muted);
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   FORMULÁRIOS
+========================================================= */
+
+.form-title {
+
+    margin-bottom: 25px;
+
+    color: var(--primary);
+
+    font-size: 22px;
+
+}
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    margin-bottom: 17px;
+
+}
+
+.form-group label {
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+
+    width: 100%;
+
+    padding: 11px 12px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    background: #FFFFFF;
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    outline: none;
+
+    transition: 0.2s;
+
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(11, 31, 58, 0.10);
+
+}
+
+.form-group textarea {
+
+    min-height: 110px;
+
+    resize: vertical;
+
+}
+
+.form-actions {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+}
+
+.secondary-button {
+
+    height: 42px;
+
+    padding: 0 17px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+
+    background: #FFFFFF;
+
+    color: var(--muted);
+
+    cursor: pointer;
+
+}
+
+.secondary-button:hover {
+
+    background: var(--silver-light);
+
+}
+
+
+/* =========================================================
+   NOTIFICAÇÕES
+========================================================= */
+
+.notifications-panel {
+
+    position: fixed;
+
+    top: 85px;
+
+    left: 245px;
+
+    width: 330px;
+
+    max-height: 450px;
+
+    display: none;
+
+    overflow-y: auto;
+
+    background: #FFFFFF;
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 18px 50px rgba(11, 31, 58, 0.20);
+
+    z-index: 900;
+
+}
+
+.notifications-panel.show {
+
+    display: block;
+
+}
+
+.notifications-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 17px;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+.notifications-header strong {
+
+    color: var(--primary);
+
+    font-size: 14px;
+
+}
+
+.notifications-header button {
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--primary);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+}
+
+.notification-item {
+
+    padding: 15px 17px;
+
+    border-bottom: 1px solid #E7EAEE;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+}
+
+.notification-time {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: #94A3B8;
+
+    font-size: 10px;
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast {
+
+    position: fixed;
+
+    right: 25px;
+
+    bottom: 25px;
+
+    padding: 14px 20px;
+
+    border-radius: 10px;
+
+    background: var(--primary);
+
+    color: #FFFFFF;
+
+    font-size: 13px;
+
+    box-shadow:
+        0 10px 30px rgba(11, 31, 58, 0.25);
+
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    transition: 0.25s;
+
+    pointer-events: none;
+
+    z-index: 2000;
+
+}
+
+.toast.show {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/* =========================================================
+   RESPONSIVO
+========================================================= */
+
+@media (max-width: 1250px) {
+
+    .dashboard-columns {
+
+        grid-template-columns:
+            repeat(2, minmax(250px, 1fr));
+
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    :root {
+
+        --sidebar-width: 90px;
+
+    }
+
+    .sidebar-menu {
+
+        padding: 20px 8px;
+
+    }
+
+    .nav-button {
+
+        padding: 0 5px;
+
+        text-align: center;
+
+        font-size: 10px;
+
+    }
+
+    .site-name {
+
+        display: none;
+
+    }
+
+    .site-brand {
+
+        min-width: auto;
+
+    }
+
+    .search-area {
+
+        width: 250px;
+
+    }
+
+    .notification-dot {
+
+        right: 20px;
+
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .dashboard-columns {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .content {
+
+        padding: 18px;
+
+    }
+
+    .topbar {
+
+        padding: 0 18px;
+
+    }
+
+    .search-area {
+
+        position: relative;
+
+        left: auto;
+
+        transform: none;
+
+        margin-left: auto;
+
+        width: 160px;
+
+    }
+
+    .page-header {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+}
