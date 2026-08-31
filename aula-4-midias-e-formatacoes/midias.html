@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserindo mídias no HTML5</title>
+</head>
+<body>
+    <h1>Incorporando midias no site</h1>
+
+    <h2>Imagens:</h2>
+    <img src=".\midias\imagem.jpg" alt="Foto de paisagem" width="300px" height="300px">
+
+    <h2>Imagem com legenda</h2>
+    <figure>
+        <img src=".\midias\grafico.png" alt="Gráfico de crecimento anual da empresa" width="300px">
+    </figure>
+
+    <h2>Áudios:</h2>
+    <audio controls>
+        <source src=".\midias\audio.mp3" type="audio/mpeg">
+        Não foi possivel reproduzir o áudio
+    </audio>
+
+    <h2>Video:</h2>
+    <video controls width="400px">
+        <source src=".\midias\video.mp4" type="video/mp4">
+        Não foi possivel reproduzir o video
+    </video>
+
+    <h2>Video Incorporado do Youtube</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/7GIYEWGMPy8?si=dMX0hsRpZUGsxkpK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    <h2>Mapas:</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3630.6909639340306!2d-47.84881762373322!3d-24.4961622966015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c5338bea658bc1%3A0xdea6f93b5aae61a8!2sFatec%20Registro!5e0!3m2!1spt-BR!2sbr!4v1788217127982!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+
+    <h2>Incorporando PDFs</h2>
+    <iframe 
+    src=".\midias\documento.pdf"
+    title="Horário do DSM-1"
+    width="600px"
+    height="450px"
+    >    
+    </iframe>
+</body>
+</html>
