@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabelas</title>
+</head>
+<body>
+    <h1>Tabelas no HTML</h1>
+    <!-- Estrutura minimas de uma tabela -->
+     <table border="1">
+        <tr>
+            <td>Dado 1</td>
+            <td>Dado 2</td>
+            <td>Dado 3</td>
+        </tr>
+
+        <tr>
+            <td>Dado 4</td>
+            <td>Dado 5</td>
+            <td>Dado 6</td>
+        </tr>
+     </table>
+     <!-- br: break line (quebra de linha) -->
+      <br><br><br>
+
+      <!-- Exemplo de tabela completa (com mesclagem) -->
+       <table border="1">
+        <caption>Vendas de mês</caption>
+        <!-- Cabeçalho da tabela -->
+         <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Valor</th>
+            </tr>
+         </thead>
+         <!-- Corpo de tabela -->
+          <tbody>
+            <!-- linha 1 -->
+            <tr>
+                <td rowspan="2">Mouses</td>
+                <td>10</td>
+                <td>R$ 500,00</td>
+            </tr>
+            <!-- linha 2 -->
+             <tr>
+                <td>20</td>
+                <td>R$ 1.000,00</td>
+             </tr>
+          </tbody>
+          <!-- Rodapé -->
+           <tfoot>
+            <tr>
+                <!-- colspan mescla colunas -->
+                 <th colspan="2">Toral:</th>
+                 <td>R$ 1.500,00</td>
+            </tr>
+           </tfoot>
+       </table>
+
+       <!-- Tabela completa com o atributo "scope" -->
+        <table border="1">
+            <caption>Notas dos alunos por disciplina</caption>
+            <thead>
+                <tr>
+                    <th>Aluno</th>
+                    <th>Matemática</th>
+                    <th>Português</th>
+                    <th>História</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Linha 1 : Ana -->
+                 <tr>
+                    <th scope="row">Ana</th>
+                    <td>8.5</td>
+                    <td>9.0</td>
+                    <td>7.5</td>
+                 </tr>
+                 <!-- Linha 2 : Bruno -->
+                 <tr>
+                    <th scope="row">Bruno</th>
+                    <td>9.5</td>
+                    <td>10.0</td>
+                    <td>8.5</td>
+                 </tr>
+                <!-- Linha 1 : Carlos -->
+                 <tr>
+                    <th scope="row">Carlos</th>
+                    <td>9.0</td>
+                    <td>8.5</td>
+                    <td>8.0</td>
+                 </tr>
+            </tbody>    
+</body>
+</html>
